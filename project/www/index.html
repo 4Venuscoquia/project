@@ -1,0 +1,166 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<html>
+   <head>
+   <style>
+   body {
+/* Include the padding and border in an element's total width and height */
+* {
+  box-sizing: border-box;
+}
+
+/* Remove margins and padding from the list */
+ul {
+  margin: 0;
+  padding: 0;
+}
+}
+   /* Style the input */
+ol {
+padding: 5px 5px 5px 5px;
+float: left;
+color: #a6a6a6;
+}
+input {
+  border: none;
+  width: 50%;
+  padding: 10px;
+  float: left;
+  font-size: 16px;
+}
+    /* Style the "Add" button */
+.addBtn {
+  padding: 10px;
+  width: 20%;
+  background: gray;
+  opacity: 0.8;
+  color: black;
+  float: left;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.addBtn:hover {
+  background-color: #5c8a8a;
+}
+
+/* Style the list items */
+ul {
+  cursor: pointer;
+  font-size: 20px;
+  color: #00004d;
+  
+  /* make the list items unselectable */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+</style>
+      
+      <!--<link rel="stylesheet" href="C:/Users/User/Desktop/Menu/www/css/new2.css">-->
+      <title>
+         Fast Food Menu
+      </title>
+   </head>
+   <body style="background-image: url(C:/Users/User/Desktop/finalproj/project/www/img/wow.png); background-repeat: no-repeat; background-position: center center; background-attachment: fixed; background-size: cover;">
+
+ <div id="myDIV" class="header">
+<h2 style="margin:5px">Welcome To My Resto!!!</h2>
+<h2 style="margin:5px">All Kinds of Food is Here!!!</h2>
+<!--<h2 style="margin:5px">Click x If You Don't Like The Food...</h2>-->
+
+  <input type="text" id="myInput" placeholder="What is your order.....">
+  <span onclick="newElement()" class="addBtn">Add</span>
+</div>
+<ul id="myUL" style="float: right; padding-top: 5px; width: 30%; padding-bottom: 10px;">
+</ul>
+<div>
+    <ol style="background-color: black; opacity: 0.7; width: 45%; line-height: 30%;">
+    <p>~~Food Menu~~</p>
+    <p>Special Spaghetti</p>
+    <p>Carbonara</p>
+    <p>French Fries</p>
+    <p>Ice Cream Cake</p>
+    <p>Chicken Sandwich</p>
+    <p>Roasted Chicken</p>
+    <p>Vegetable Salad</p>
+    <p>Graham</p>
+    <p>Oreo Frappe</p>
+    <p>Java Frappe</p>
+    <p>Buko Pandan Shake</p>
+    <p>Buko Shake</p>
+    <p>Ice Cream Rolls</p>
+    <p>Ramen</p>
+    <p>Beef Missono</p>
+    <p>Tempura</p>
+    </ol>
+</div>
+  <script>
+    
+// Create a "close" button and append it to each list item
+var myNodelist = document.getElementsByTagName("LI");
+var i;
+for (i = 0; i < myNodelist.length; i++) {
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+  span.className = "close";
+  span.appendChild(txt);
+  myNodelist[i].appendChild(span);
+}
+
+// Click on a close button to hide the current list item
+var close = document.getElementsByClassName("close");
+var i;
+for (i = 0; i < close.length; i++) {
+  close[i].onclick = function() {
+    var div = this.parentElement;
+    div.style.display = "none";
+  }
+}
+
+// Add a "checked" symbol when clicking on a list item
+var list = document.querySelector('ul');
+list.addEventListener('click', function(ev) {
+  if (ev.target.tagName === 'LI') {
+    ev.target.classList.toggle('checked');
+  }
+}, false);
+
+// Create a new list item when clicking on the "Add" button
+function newElement() {
+  var li = document.createElement("li");
+  var inputValue = document.getElementById("myInput").value;
+  var t = document.createTextNode(inputValue);
+  li.appendChild(t);
+  if (inputValue === '') {
+    alert("You must write something!");
+  } else {
+    document.getElementById("myUL").appendChild(li);
+  }
+  document.getElementById("myInput").value = "";
+
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+  span.className = "close";
+  span.appendChild(txt);
+  li.appendChild(span);
+
+  for (i = 0; i < close.length; i++) {
+    close[i].onclick = function() {
+      var div = this.parentElement;
+      div.style.display = "none";
+    }
+  }
+}
+  </script>
+  <!--<div style="float: left; font-size: 24px; padding-bottom: 0px;">
+<ul>
+<li><a href="C:/Users/User/Desktop/Menu/www/new1.html">Back To Menu</a></li>
+</ul>
+</div>-->
+  </html>
